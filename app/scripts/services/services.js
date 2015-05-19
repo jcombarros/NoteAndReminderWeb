@@ -17,7 +17,7 @@ angular.module('noteAndReminderWebApp')
     var finalUrl ="";
 
     var makeUrl = function(){
-      finalUrl = baseUrl + "/" +  entity + "/" + id;
+      finalUrl = baseUrl + "/" +  entity + "/" + id + "?callback=mycallback";
     }
 
     service.setEntity = function(data){
@@ -32,7 +32,7 @@ angular.module('noteAndReminderWebApp')
       makeUrl();
       var deferred = $q.defer();
       $http({
-        method: 'GET',
+        method: 'JSONP',
         url: finalUrl
       }).success(function(data){
         deferred.resolve(data);
