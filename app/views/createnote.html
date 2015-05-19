@@ -1,0 +1,12 @@
+<form name="createNoteForm" ng-submit="save()">
+	<h2>Create a Note</h2>
+	<div class="form-group">
+		<label for="title">Title:</label>
+		<input type="text" class="form-control" id="title" ng-model="note.title" placeholder="Your title goes here" focus>
+	</div>
+	<div class="form-group">
+		<label for="description">Description</label>
+		<textarea class="form-control" id="description" ng-model="note.description" placeholder="And here your description"></textarea>
+	</div>
+	<button type="submit" class="btn btn-default">Save</button>
+</form>
