@@ -31,6 +31,10 @@ angular
         templateUrl: 'views/createnote.html',
         controller: 'CreatenoteCtrl'
       })
+      .when('/editNote', {
+        templateUrl: 'views/editnote.html',
+        controller: 'EditnoteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
