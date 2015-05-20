@@ -35,6 +35,14 @@ angular
         templateUrl: 'views/editnote.html',
         controller: 'EditnoteCtrl'
       })
+      .when('/viewNote', {
+        templateUrl: 'views/viewnote.html',
+        controller: 'ViewnoteCtrl'
+      })
+      .when('/listNote', {
+        templateUrl: 'views/listnote.html',
+        controller: 'ListnoteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
