@@ -31,11 +31,11 @@ angular
         templateUrl: 'views/createnote.html',
         controller: 'CreatenoteCtrl'
       })
-      .when('/editNote', {
+      .when('/editNote/:noteId', {
         templateUrl: 'views/editnote.html',
         controller: 'EditnoteCtrl'
       })
-      .when('/viewNote', {
+      .when('/viewNote/:noteId', {
         templateUrl: 'views/viewnote.html',
         controller: 'ViewnoteCtrl'
       })
@@ -43,7 +43,7 @@ angular
         templateUrl: 'views/listnote.html',
         controller: 'ListnoteCtrl'
       })
-      .when('/deleteNote', {
+      .when('/deleteNote/:noteId', {
         templateUrl: 'views/deletenote.html',
         controller: 'DeletenoteCtrl'
       })

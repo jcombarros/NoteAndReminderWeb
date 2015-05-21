@@ -8,7 +8,7 @@
  * Controller of the noteAndReminderWebApp
  */
 angular.module('noteAndReminderWebApp')
-  .controller('ListnoteCtrl', function ($scope, apiService) {
+  .controller('ListnoteCtrl', function ($scope, $routeParams, $location, apiService) {
     apiService.setEntity('Note');
     apiService.get().then(
     	function(data){
@@ -17,4 +17,7 @@ angular.module('noteAndReminderWebApp')
     		alert();
    		}
    	);
+    $scope.create = function(){
+      $location.path('/createNote');
+    };
   });

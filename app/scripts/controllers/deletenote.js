@@ -8,9 +8,9 @@
  * Controller of the noteAndReminderWebApp
  */
 angular.module('noteAndReminderWebApp')
-  .controller('DeletenoteCtrl', function ($scope, apiService) {
+  .controller('DeletenoteCtrl', function ($scope, $routeParams, $location, apiService) {
   	apiService.setEntity('Note');
-  	apiService.setId('1');
+  	apiService.setId($routeParams.noteId);
     apiService.get().then(
     	function(data){
     		$scope.note = data;
@@ -29,6 +29,10 @@ angular.module('noteAndReminderWebApp')
 	    		alert();
 	   		}
    		);
-    	//REDIRECT
+    	$scope.back();
+    };
+
+    $scope.back = function(){
+       $location.path('/editNote/' + $routeParams.noteId);
     };
   });

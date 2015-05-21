@@ -1,6 +1,17 @@
 <div name="listNote">
-	<h2>List of Notes</h2>
-	<ul ng-repeat="note in notes">
-		<li>{{note.title}} - <em>{{note.creationDate}}</em></li>
-	</ul>
+	<div class="col-sm-12">
+		<div class="col-sm-10">
+			<h2>List of Notes</h2>
+		</div>
+		<div class="col-sm-2">
+			</br>
+			<button class="btn btn-primary" ng-click="create()">New note</button>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<ul ng-repeat="note in notes">
+			<li><a href="#/viewNote/{{note.id}}">{{note.title}}</a> - <em>{{note.creationDate}}</em></li>
+		</ul>
+		<p></p>
+	</div>
 </div>

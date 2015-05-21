@@ -8,7 +8,7 @@
  * Controller of the noteAndReminderWebApp
  */
 angular.module('noteAndReminderWebApp')
-  .controller('CreatenoteCtrl', function ($scope, apiService) {
+  .controller('CreatenoteCtrl', function ($scope, $routeParams, $location, apiService) {
   	$scope.note = {};
    
     $scope.save = function(){
@@ -22,6 +22,11 @@ angular.module('noteAndReminderWebApp')
 	    		alert();
 	   		}
    		);
-    	//REDIRECT
+    	$scope.back();
     };
+
+    $scope.back = function(){
+       $location.path('/listNote');
+    };
+
   });
