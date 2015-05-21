@@ -43,6 +43,10 @@ angular
         templateUrl: 'views/listnote.html',
         controller: 'ListnoteCtrl'
       })
+      .when('/deleteNote', {
+        templateUrl: 'views/deletenote.html',
+        controller: 'DeletenoteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

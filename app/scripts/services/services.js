@@ -78,6 +78,20 @@ angular.module('noteAndReminderWebApp')
       return deferred.promise;
     }
 
+    service.delete = function(){
+      makeUrl();
+      var deferred = $q.defer();
+      $http({
+        method: 'DELETE',
+        url: finalUrl
+      }).success(function(data){
+        deferred.resolve(data);
+      }).error(function(){
+        deferred.reject('There was an error')
+      })
+      return deferred.promise;
+    }
+
     return service;
 
   });
