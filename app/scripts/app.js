@@ -27,6 +27,9 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/404', {
+        templateUrl: '404.html'
+      })
       .when('/createNote', {
         templateUrl: 'views/note/createnote.html',
         controller: 'CreatenoteCtrl'

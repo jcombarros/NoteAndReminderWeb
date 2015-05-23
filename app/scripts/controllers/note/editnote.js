@@ -13,7 +13,7 @@ angular.module('noteAndReminderWebApp')
     	function(data){
     		$scope.note = data;
     	}, function(data){
-    		alert();
+    		$location.path('/404');
    		}
    	);
     $scope.edit = function(){
@@ -22,7 +22,7 @@ angular.module('noteAndReminderWebApp')
 	    	function(data){
 	    		$scope.note = data;
 	    	}, function(data){
-	    		alert();
+	    		alert("A problem has happened. Try again");
 	   		}
    		);
     	$scope.back();

@@ -13,7 +13,7 @@ angular.module('noteAndReminderWebApp')
     	function(data){
     		$scope.note = data;
     	}, function(data){
-    		alert();
+    		$location.path('/404');
    		}
    	);
 
