@@ -28,23 +28,23 @@ angular
         controller: 'AboutCtrl'
       })
       .when('/createNote', {
-        templateUrl: 'views/createnote.html',
+        templateUrl: 'views/note/createnote.html',
         controller: 'CreatenoteCtrl'
       })
       .when('/editNote/:noteId', {
-        templateUrl: 'views/editnote.html',
+        templateUrl: 'views/note/editnote.html',
         controller: 'EditnoteCtrl'
       })
       .when('/viewNote/:noteId', {
-        templateUrl: 'views/viewnote.html',
+        templateUrl: 'views/note/viewnote.html',
         controller: 'ViewnoteCtrl'
       })
       .when('/listNote', {
-        templateUrl: 'views/listnote.html',
+        templateUrl: 'views/note/listnote.html',
         controller: 'ListnoteCtrl'
       })
       .when('/deleteNote/:noteId', {
-        templateUrl: 'views/deletenote.html',
+        templateUrl: 'views/note/deletenote.html',
         controller: 'DeletenoteCtrl'
       })
       .otherwise({
