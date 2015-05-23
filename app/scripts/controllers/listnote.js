@@ -9,8 +9,7 @@
  */
 angular.module('noteAndReminderWebApp')
   .controller('ListnoteCtrl', function ($scope, $routeParams, $location, apiService) {
-    apiService.setEntity('Note');
-    apiService.get().then(
+    apiService.getAll('Note').then(
     	function(data){
     		$scope.notes = data;
     	}, function(data){

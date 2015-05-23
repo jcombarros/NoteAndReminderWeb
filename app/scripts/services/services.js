@@ -22,67 +22,49 @@ angular.module('noteAndReminderWebApp')
       finalUrl = baseUrl + "/" +  entity + "/" + id;
     }
 
-    service.setEntity = function(data){
+    var setEntity = function(data){
       entity = data;
     }
 
-    service.setId = function(data){
+    var setId = function(data){
       id = data;
     }
 
-    service.setEntityObject = function(data){
+    var setEntityObject = function(data){
       entityObject = data;
     }
 
-    service.get = function(){
-      makeUrl();
-      var deferred = $q.defer();
-      $http({
-        method: 'GET',
-        url: finalUrl
-      }).success(function(data){
-        deferred.resolve(data);
-      }).error(function(){
-        deferred.reject('There was an error')
-      })
-      return deferred.promise;
+    service.getAll = function(entity){
+      return methodREST('GET', entity, "", {});
     }
 
-    service.save = function(){
+    service.get = function(entity, id){
+      return methodREST('GET', entity, id, {});
+    }
+
+    service.save = function(entity, object){
+      return methodREST('POST', entity, "", object);
+    }
+
+    service.edit = function(entity, id, object){
+      return methodREST('PUT', entity, id, object);
+    }
+
+    service.delete = function(entity, id){
+      return methodREST('DELETE', entity, id, {});
+    }
+
+    var methodREST = function(methodREST, entity, id, object){
+      setEntity(entity);
+      setId(id);
+      setEntityObject(object);
+
       makeUrl();
+
       var deferred = $q.defer();
       $http({
-        method: 'POST',
+        method: methodREST,
         data: entityObject,
-        url: finalUrl
-      }).success(function(data){
-        deferred.resolve(data);
-      }).error(function(){
-        deferred.reject('There was an error')
-      })
-      return deferred.promise;
-    }
-
-    service.edit = function(){
-      makeUrl();
-      var deferred = $q.defer();
-      $http({
-        method: 'PUT',
-        data: entityObject,
-        url: finalUrl
-      }).success(function(data){
-        deferred.resolve(data);
-      }).error(function(){
-        deferred.reject('There was an error')
-      })
-      return deferred.promise;
-    }
-
-    service.delete = function(){
-      makeUrl();
-      var deferred = $q.defer();
-      $http({
-        method: 'DELETE',
         url: finalUrl
       }).success(function(data){
         deferred.resolve(data);

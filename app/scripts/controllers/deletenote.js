@@ -9,9 +9,7 @@
  */
 angular.module('noteAndReminderWebApp')
   .controller('DeletenoteCtrl', function ($scope, $routeParams, $location, apiService) {
-  	apiService.setEntity('Note');
-  	apiService.setId($routeParams.noteId);
-    apiService.get().then(
+    apiService.get('Note', $routeParams.noteId).then(
     	function(data){
     		$scope.note = data;
     	}, function(data){
@@ -19,10 +17,7 @@ angular.module('noteAndReminderWebApp')
    		}
    	);
     $scope.delete = function(){
-    	var note = $scope.note;
-    	apiService.setEntity('Note');
-    	apiService.setId(note.id);
-    	apiService.delete().then(
+    	apiService.delete('Note', $scope.note.id).then(
 	    	function(data){
 	    		$scope.note = data;
 	    	}, function(data){
@@ -33,6 +28,6 @@ angular.module('noteAndReminderWebApp')
     };
 
     $scope.back = function(){
-       $location.path('/editNote/' + $routeParams.noteId);
+       $location.path('/listNote');
     };
   });

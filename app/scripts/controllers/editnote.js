@@ -9,9 +9,7 @@
  */
 angular.module('noteAndReminderWebApp')
   .controller('EditnoteCtrl', function ($scope, $routeParams, $location, apiService) {
-    apiService.setEntity('Note');
-  	apiService.setId($routeParams.noteId);
-    apiService.get().then(
+    apiService.get('Note', $routeParams.noteId).then(
     	function(data){
     		$scope.note = data;
     	}, function(data){
@@ -20,10 +18,7 @@ angular.module('noteAndReminderWebApp')
    	);
     $scope.edit = function(){
     	var note = $scope.note;
-    	apiService.setEntity('Note');
-    	apiService.setId(note.id);
-    	apiService.setEntityObject(note);
-    	apiService.edit().then(
+    	apiService.edit('Note', note.id, note).then(
 	    	function(data){
 	    		$scope.note = data;
 	    	}, function(data){

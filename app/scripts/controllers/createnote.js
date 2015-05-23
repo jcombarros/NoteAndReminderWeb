@@ -12,10 +12,7 @@ angular.module('noteAndReminderWebApp')
   	$scope.note = {};
    
     $scope.save = function(){
-    	var note = $scope.note;
-		apiService.setEntity('Note');
-    	apiService.setEntityObject(note);
-    	apiService.save().then(
+    	apiService.save('Note', $scope.note).then(
 	    	function(data){
 	    		$scope.note = data;
 	    	}, function(data){

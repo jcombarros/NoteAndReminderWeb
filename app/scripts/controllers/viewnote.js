@@ -9,9 +9,7 @@
  */
 angular.module('noteAndReminderWebApp')
   .controller('ViewnoteCtrl', function ($scope, $routeParams, $location, apiService) {
-    apiService.setEntity('Note');
-  	apiService.setId($routeParams.noteId);
-    apiService.get().then(
+    apiService.get('Note', $routeParams.noteId).then(
     	function(data){
     		$scope.note = data;
     	}, function(data){
