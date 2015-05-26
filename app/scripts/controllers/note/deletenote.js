@@ -28,6 +28,6 @@ angular.module('noteAndReminderWebApp')
     };
 
     $scope.back = function(){
-       $location.path('/listNote');
+       $location.path('/editNote/' + $routeParams.noteId);
     };
   });

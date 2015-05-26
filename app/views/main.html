@@ -1,23 +1,17 @@
-<div class="container">
-  <h2>My todos</h2>
-
-  <!-- Todos input -->
-  <form role="form" ng-submit="addTodo()">
-    <div class="row">
-      <div class="input-group">
-        <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
-        <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Add">
-        </span>
-      </div>
-    </div>
-  </form>
-    <p></p>
-    <!-- Todos list -->
-    <p class="input-group" ng-repeat="todo in todos">
-      <input type="text" ng-model="todo" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
-      </span>
-    </p>
+<div class="jumbotron">
+  <h1>Welcome to NoteAndReminder Web</h1>
+</div>
+<div class="row marketing">
+  <h4>Create Notes and Reminders</h4>
+  <p>
+    It is really easy. Don't you trust on me? try it.
+  </p>
+  <h4>We remind your Reminders</h4>
+  <p>
+    Are you these kind of people used to forget everything? Don't thank us. We do it for you.
+  </p>
+  <h4>Categorize it</h4>
+  <p>
+    We know you are a disaster. Don't worry! we organize everything for you.
+  </p>
 </div>
