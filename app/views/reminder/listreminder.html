@@ -1,0 +1,75 @@
+<div name="listReminders">
+	<div class="col-sm-12">
+		<div class="col-sm-10">
+			<h2>Reminders</h2>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-10">
+			<h4>Create a Reminder</h4>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<form ng-submit="save()">
+			<div class="form-group">
+				<div class="col-sm-5">
+					<label for="title">Title:</label>
+				</div>
+				<div class="col-sm-4">
+					<label for="completionTime">Completion date:</label>
+				</div>
+				<div class="col-sm-3">
+					<label>&nbsp;</label>
+				</div>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="title" ng-model="reminder.title" placeholder="Your title goes here" required focus>
+				</div>
+				<div class="col-sm-4">
+					<input type="date" class="form-control" id="completionDateString" ng-model="completionDate" placeholder="dd/mm/yyyy" required>
+					<input type="time" class="form-control" id="completionTimeString" ng-model="completionTime" placeholder="hh:mm" required>
+				</div>
+				<div class="col-sm-3">
+					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-sm-12">
+		<div class="col-sm-10">
+			<h4>List of Reminders</h4>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Is Completed?</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="reminder in reminders">
+				<tr id="info{{reminder.id}}" onmouseover="$(this).toggleClass('active')" onmouseout="$(this).toggleClass('active')">
+					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.title}}</td>
+					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.completed}}</td>
+					<td align="right">
+						<button type="button"  ng-click="edit({{reminder.id}})" class="btn btn-primary btn-sm">Edit</button>
+						<button type="button" ng-click="delete({{reminder.id}})" class="btn btn-danger btn-sm">Delete</button>
+					</td>
+				</tr>
+				<tr id="details{{reminder.id}}" class="invisible">
+					<td colspan="3">
+						Creation date: {{reminder.creationDate}}, Completion date: {{reminder.completionDate}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p></p>
+	</div>
+</div>

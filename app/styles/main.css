@@ -86,3 +86,10 @@ body {
   }
 
 }
+
+.cursorPointer {
+  cursor: pointer;
+}
+.invisible {
+  display: none;
+}

@@ -50,6 +50,10 @@ angular
         templateUrl: 'views/note/deletenote.html',
         controller: 'DeletenoteCtrl'
       })
+      .when('/listreminder', {
+        templateUrl: 'views/reminder/listreminder.html',
+        controller: 'ListreminderCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
