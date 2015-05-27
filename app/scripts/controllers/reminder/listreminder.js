@@ -24,25 +24,61 @@ angular.module('noteAndReminderWebApp')
   	$scope.reminder = {};
     $scope.getAll();
 
-   	$scope.save = function(){
+   	$scope.action = function(){
 
-   		$scope.reminder.completionDate = convertDateTime($scope.completionDate, $scope.completionTime);
+   		$scope.reminder.completionDate = convertDateTimeToString($scope.completionDate, $scope.completionTime);
 
-   		apiService.save('Reminder', $scope.reminder).then(
-	    	function(data){
-	    		$scope.reminder = {};
-	    		$scope.completionDate = "";
-	    		$scope.completionTime = "";
-	    		$scope.reminders.push(data);
-	    	}, function(data){
-	    		alert("A problem has happened. Try again");
+   		if(edition){
+   			apiService.edit('Reminder', $scope.reminder.id, $scope.reminder).then(
+		    	function(data){
+		    		//$scope.reminders.push(data);
+		    	}, function(data){
+		    		alert("A problem has happened. Try again");
 
-	   		}
-   		);
+		   		}
+	   		);
+   		}else{
+	   		apiService.save('Reminder', $scope.reminder).then(
+		    	function(data){
+		    		$scope.reminders.push(data);
+		    	}, function(data){
+		    		alert("A problem has happened. Try again");
+
+		   		}
+	   		);
+   		}
+   		$scope.back();
    	};
 
+   	var edition = false;
    	$scope.edit = function(id){
-   		alert(id);
+   		if(!edition){
+	   		$('#divCreate').addClass('invisible');
+	   		$('#divEdit').removeClass('invisible');
+
+	   		$scope.reminder = $.grep($scope.reminders, function(e){ return e.id == id; })[0];
+	   		$scope.completionDate = convertStringToDate($scope.reminder.completionDate);
+			$scope.completionTime = convertStringToTime($scope.reminder.completionDate);
+
+			$('#deleteButton'+id).prop('disabled','disabled');
+			$('#info'+id).addClass('active');
+	   		edition = true;
+   		}
+   		
+   	};
+
+   	$scope.back = function(id){
+   		if(edition){
+	   		$('#divCreate').removeClass('invisible');
+	   		$('#divEdit').addClass('invisible');
+   		}
+   		$('#deleteButton'+$scope.reminder.id).removeAttr('disabled');
+   		$('#info'+$scope.reminder.id).removeClass('active');
+
+   		$scope.reminder = {};
+		$scope.completionDate = "";
+		$scope.completionTime = "";
+   		edition = false;
    	};
 
    	$scope.delete = function(id){
@@ -69,11 +105,6 @@ angular.module('noteAndReminderWebApp')
    		else{
    			selected = null;
    		}
-   	};
-
-   	$scope.info = function(id){
-   		alert();
-   		$('#info'+id).toggleClass('active');
    	};
 
   });

@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="col-sm-12">
-		<form ng-submit="save()">
+		<form ng-submit="action()">
 			<div class="form-group">
 				<div class="col-sm-5">
 					<label for="title">Title:</label>
@@ -32,8 +32,12 @@
 					<input type="date" class="form-control" id="completionDateString" ng-model="completionDate" placeholder="dd/mm/aaaa" required>
 					<input type="time" class="form-control" id="completionTimeString" ng-model="completionTime" placeholder="hh:mm" required>
 				</div>
-				<div class="col-sm-3">
+				<div id="divCreate" class="col-sm-3">
 					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+				<div id="divEdit" class="col-sm-3 invisible">
+					<button type="submit" class="btn btn-primary">Edit</button>
+					<button type="button" class="btn btn-default" ng-click="back()">Back</button>
 				</div>
 			</div>
 		</form>
@@ -60,7 +64,9 @@
 					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.completed}}</td>
 					<td align="right">
 						<button type="button"  ng-click="edit({{reminder.id}})" class="btn btn-primary btn-sm">Edit</button>
-						<button type="button" ng-click="delete({{reminder.id}})" class="btn btn-danger btn-sm">Delete</button>
+						<button id="deleteButton{{reminder.id}}" type="button" ng-click="delete({{reminder.id}})" class="btn btn-danger btn-sm">
+							Delete
+						</button>
 					</td>
 				</tr>
 				<tr id="details{{reminder.id}}" class="invisible">
