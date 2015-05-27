@@ -19,15 +19,15 @@ angular.module('noteAndReminderWebApp')
     $scope.delete = function(){
     	apiService.delete('Note', $scope.note.id).then(
 	    	function(data){
-	    		$scope.note = data;
+	    		//$scope.note = data;
 	    	}, function(data){
           alert("A problem has happened. Try again");
 	   		}
    		);
-    	$scope.back();
+    	$location.path('/listNote');
     };
 
     $scope.back = function(){
-       $location.path('/editNote/' + $routeParams.noteId);
+       $location.path('/editNote/' + $scope.note.id);
     };
   });

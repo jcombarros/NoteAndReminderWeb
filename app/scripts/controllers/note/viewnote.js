@@ -22,6 +22,6 @@ angular.module('noteAndReminderWebApp')
     };
 
     $scope.edit = function(){
-       $location.path('/editNote/' + $routeParams.noteId);
+       $location.path('/editNote/' + $scope.note.id);
     };
   });

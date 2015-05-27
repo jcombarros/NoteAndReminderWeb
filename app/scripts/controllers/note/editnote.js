@@ -28,9 +28,9 @@ angular.module('noteAndReminderWebApp')
     	$scope.back();
     };
     $scope.back = function(){
-       $location.path('/viewNote/' + $routeParams.noteId);
+       $location.path('/viewNote/' + $scope.note.id);
     };
     $scope.delete = function(){
-       $location.path('/deleteNote/' + $routeParams.noteId);
+       $location.path('/deleteNote/' + $scope.note.id);
     };
   });
