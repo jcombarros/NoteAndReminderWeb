@@ -57,8 +57,18 @@ angular.module('noteAndReminderWebApp')
 	   	}
    	};
 
+   	var selected;
    	$scope.details = function(id){
-   		$('#details'+id).toggleClass('invisible');
+   		if(selected){
+   			$('#details'+selected).toggleClass('invisible');
+   		}
+   		if(selected != id){
+	   		$('#details'+id).toggleClass('invisible');
+			selected = id;
+   		}
+   		else{
+   			selected = null;
+   		}
    	};
 
    	$scope.info = function(id){

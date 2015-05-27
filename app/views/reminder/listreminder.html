@@ -55,7 +55,7 @@
 				</tr>
 			</thead>
 			<tbody ng-repeat="reminder in reminders">
-				<tr id="info{{reminder.id}}" onmouseover="$(this).toggleClass('active')" onmouseout="$(this).toggleClass('active')">
+				<tr id="info{{reminder.id}}" onmouseover="$(this).toggleClass('success')" onmouseout="$(this).toggleClass('success')">
 					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.title}}</td>
 					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.completed}}</td>
 					<td align="right">
@@ -65,7 +65,9 @@
 				</tr>
 				<tr id="details{{reminder.id}}" class="invisible">
 					<td colspan="3">
-						Creation date: {{reminder.creationDate}}, Completion date: {{reminder.completionDate}}
+						<ul>
+							<li><em>Creation date: {{reminder.creationDate}}, Completion date: {{reminder.completionDate}}</em></li>
+						</ul>
 					</td>
 				</tr>
 			</tbody>
