@@ -54,6 +54,10 @@ angular
         templateUrl: 'views/reminder/listreminder.html',
         controller: 'ListreminderCtrl'
       })
+      .when('/loginUser', {
+        templateUrl: 'views/user/loginuser.html',
+        controller: 'LoginuserCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
