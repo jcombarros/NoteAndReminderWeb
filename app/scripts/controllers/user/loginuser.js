@@ -10,7 +10,6 @@
 angular.module('noteAndReminderWebApp')
   .controller('LoginuserCtrl', function ($scope, $location, authService) {
     $scope.token = {};
-    alert(authService.getAccessToken());
     $scope.login = function(){
     	authService.login($scope.token).then(
 	    	function(data){

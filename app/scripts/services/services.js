@@ -8,7 +8,7 @@
  * Factory in the noteAndReminderWebApp.
  */
 var app = angular.module('noteAndReminderWebApp')
-app.factory('apiService', function ($http, $q) {
+app.factory('apiService', function ($rootScope, $http, $q, authService) {
   var service = {};
   var baseUrl = "http://localhost:8080/NoteAndReminderApi/api";
   var entity = "";
@@ -54,10 +54,6 @@ app.factory('apiService', function ($http, $q) {
     return methodREST('DELETE', entity, id, {});
   }
 
-  service.login = function(entity, object){
-    return methodREST('POST', entity + "/authenticate", "", object);
-  }
-
   var methodREST = function(methodREST, entity, id, object){
     setEntity(entity);
     setId(id);
@@ -69,6 +65,7 @@ app.factory('apiService', function ($http, $q) {
     $http({
       method: methodREST,
       data: entityObject,
+      headers: {'Authorization': authService.getAccessToken()},
       url: finalUrl
     }).success(function(data){
       deferred.resolve(data);
@@ -82,9 +79,9 @@ app.factory('apiService', function ($http, $q) {
 
 });
 
-app.factory('authService', function ($http, $q) {
+app.factory('authService', function ($rootScope, $http, $q) {
   var service = {};
-  var baseUrl = "http://localhost:8080/NoteAndReminderApi/api";
+  var baseUrl = "http://localhost:8080/NoteAndReminderApi/auth";
   var entity = "";
   var id = "";
   var finalUrl ="";
@@ -106,7 +103,7 @@ app.factory('authService', function ($http, $q) {
     };
 
   service.login = function(token){
-    return methodREST('POST', "User" + "/authenticate", token);
+    return methodREST('POST', "authenticate", token);
   }
 
   var methodREST = function(methodREST, entity, token){
@@ -122,6 +119,7 @@ app.factory('authService', function ($http, $q) {
       url: finalUrl
     }).success(function(data){
       service.loginToken = data;
+      $rootScope.logged = true;
       deferred.resolve(data);
     }).error(function(){
       deferred.reject('There was an error')
