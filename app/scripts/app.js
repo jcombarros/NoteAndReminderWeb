@@ -58,6 +58,14 @@ angular
         templateUrl: 'views/user/loginuser.html',
         controller: 'LoginuserCtrl'
       })
+      .when('/createUser', {
+        templateUrl: 'views/user/createuser.html',
+        controller: 'CreateuserCtrl'
+      })
+      .when('/logoutUser', {
+        templateUrl: 'views/user/logoutuser.html',
+        controller: 'LogoutuserCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

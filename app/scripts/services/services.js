@@ -99,14 +99,26 @@ app.factory('authService', function ($rootScope, $http, $q) {
   }
 
   service.getAccessToken = function () {
-        return service.loginToken.token;
-    };
+      return service.loginToken.token;
+  };
+
+  service.getLoginToken = function () {
+      return service.loginToken;
+  };
 
   service.login = function(token){
     return methodREST('POST', "authenticate", token);
   }
 
-  var methodREST = function(methodREST, entity, token){
+  service.create = function(user){
+    return methodREST('POST', "createUser", user);
+  }
+
+  service.logout = function(token){
+    return methodREST('POST', "logout", token);
+  }
+
+  var methodREST = function(methodREST, entity, object){
     setEntity(entity);
     setId(id);
 
@@ -115,11 +127,17 @@ app.factory('authService', function ($rootScope, $http, $q) {
     var deferred = $q.defer();
     $http({
       method: methodREST,
-      data: token,
+      data: object,
       url: finalUrl
     }).success(function(data){
-      service.loginToken = data;
-      $rootScope.logged = true;
+      if(data.auth){
+        service.loginToken = data;
+        $rootScope.logged = data.auth;
+      }
+      else{
+        service.loginToken = {};
+        $rootScope.logged = data.auth;
+      }
       deferred.resolve(data);
     }).error(function(){
       deferred.reject('There was an error')

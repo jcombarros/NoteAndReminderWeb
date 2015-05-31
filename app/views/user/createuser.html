@@ -1,0 +1,36 @@
+<form name="loginForm" ng-submit="create()">
+	<div class="col-sm-12">
+		<div class="col-sm-3">
+			<p></p>
+		</div>
+		<div class="col-sm-6">
+			<h2>Register</h2>
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" id="name" ng-model="user.name" required focus>
+			</div>
+			<div class="form-group">
+				<label for="surname">Surname:</label>
+				<input type="text" class="form-control" id="surname" ng-model="user.surname" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="text" class="form-control" id="email" ng-model="user.email" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" id="password" ng-model="user.password" required>
+			</div>
+			<div class="form-group">
+				<label for="passwordAgain">Password (again):</label>
+				<input type="password" class="form-control" id="passwordAgain" ng-model="passwordAgain" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Register</button>
+			<button class="btn btn-default" ng-click="back()">Home</button>
+			<p></p>
+		</div>
+		<div class="col-sm-3">
+			<p></p>
+		</div>
+	</div>
+</form>

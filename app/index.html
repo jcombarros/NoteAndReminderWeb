@@ -46,6 +46,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li ng-show="!logged"><a ng-href="#/loginUser">Login</a></li>
+              <li ng-show="!logged"><a ng-href="#/createUser">Register</a></li>
               <li ng-show="logged"><a ng-href="#/logoutUser">Logout</a></li>
             </ul>
           </div>
@@ -104,6 +105,8 @@
         <script src="scripts/controllers/note/deletenote.js"></script>
         <script src="scripts/controllers/reminder/listreminder.js"></script>
         <script src="scripts/controllers/user/loginuser.js"></script>
+        <script src="scripts/controllers/user/createuser.js"></script>
+        <script src="scripts/controllers/user/logoutuser.js"></script>
         <!-- endbuild -->
 </body>
 </html>
