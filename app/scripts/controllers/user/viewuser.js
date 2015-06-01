@@ -18,10 +18,10 @@ angular.module('noteAndReminderWebApp')
    	);
 
     $scope.back = function(){
-       $location.path('/listNote');
+       $location.path('/');
     };
 
     $scope.edit = function(){
-       $location.path('/editUser/' + $rootScope.userId);
+       $location.path('/editUser');
     };
   });
