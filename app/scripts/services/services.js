@@ -106,6 +106,10 @@ app.factory('authService', function ($rootScope, $http, $q) {
       return service.loginToken;
   };
 
+  service.setLoginTokenEmpty = function () {
+      service.loginToken = {};
+  };
+
   service.login = function(token){
     return methodREST('POST', "authenticate", token);
   }

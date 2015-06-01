@@ -8,7 +8,7 @@
  * Controller of the noteAndReminderWebApp
  */
 angular.module('noteAndReminderWebApp')
-  .controller('EdituserCtrl', function ($rootScope, $scope, $location, apiService) {
+  .controller('EdituserCtrl', function ($rootScope, $scope, $location, apiService, authService) {
   	$scope.oldPassword = '';
 	$scope.newPassword = '';
 	$scope.newPasswordAgain = '';
@@ -67,6 +67,21 @@ angular.module('noteAndReminderWebApp')
 	}
 
     $scope.delete = function(){
-       $location.path('/deleteUser');
-    };
+   		if(confirm("Caution! Are you sure you want delete this profile! :(")){
+
+	   		apiService.delete('User', $rootScope.userId).then(
+		    	function(data){
+		    		$scope.user = data;
+		    	}, function(data){
+	          		alert("A problem has happened. Try again");
+		   		}
+	   		);
+
+	   		authService.setLoginTokenEmpty();
+	        $rootScope.logged = false;
+	        $rootScope.userId = 0;
+
+	        $location.path('/');
+	   	}
+   	};
   });
