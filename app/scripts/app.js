@@ -70,6 +70,10 @@ angular
         templateUrl: 'views/user/viewuser.html',
         controller: 'ViewuserCtrl'
       })
+      .when('/editUser', {
+        templateUrl: 'views/user/edituser.html',
+        controller: 'EdituserCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
