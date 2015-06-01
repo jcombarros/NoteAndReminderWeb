@@ -1,0 +1,31 @@
+<div name="viewNote">
+	<div class="col-sm-12">
+		<div class="col-sm-10">
+			<h2>My profile</h2>
+		</div>
+		<div class="col-sm-2">
+			</br>
+			<button class="btn btn-primary" ng-click="edit()">Edit my profile</button>
+		</div>
+	</div>
+	<div class="col-sm-12">
+		<dl class="form-group">
+			<dt>Name:</dt>
+			<dd id="name">{{user.name}}</dd>
+		</dl>
+		<dl class="form-group">
+			<dt>Surname:</dt>
+			<dd id="surname">{{user.surname}}</dd>
+		</dl>
+		<dl class="form-group">
+			<dt>Email:</dt>
+			<dd id="email">{{user.email}}</dd>
+		</dl>
+		<dl class="form-group">
+			<dt>Password:</dt>
+			<dd id="password">******</dd>
+		</dl>
+		<button class="btn btn-default" ng-click="back()">Back to list</button>
+		<p></p>
+	</div>
+</div>

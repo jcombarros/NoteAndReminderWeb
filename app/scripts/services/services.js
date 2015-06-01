@@ -133,10 +133,12 @@ app.factory('authService', function ($rootScope, $http, $q) {
       if(data.auth){
         service.loginToken = data;
         $rootScope.logged = data.auth;
+        $rootScope.userId = data.userId;
       }
       else{
         service.loginToken = {};
-        $rootScope.logged = data.auth;
+        $rootScope.logged = false;
+        $rootScope.userId = 0;
       }
       deferred.resolve(data);
     }).error(function(){

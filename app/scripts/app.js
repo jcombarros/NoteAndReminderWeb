@@ -66,6 +66,10 @@ angular
         templateUrl: 'views/user/logoutuser.html',
         controller: 'LogoutuserCtrl'
       })
+      .when('/viewUser', {
+        templateUrl: 'views/user/viewuser.html',
+        controller: 'ViewuserCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
