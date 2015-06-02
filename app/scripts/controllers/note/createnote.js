@@ -15,12 +15,13 @@ angular.module('noteAndReminderWebApp')
     	apiService.save('Note', $scope.note).then(
 	    	function(data){
 	    		$scope.note = data;
+          $scope.back();
 	    	}, function(data){
 	    		alert("A problem has happened. Try again");
 
 	   		}
    		);
-    	$scope.back();
+    	
     };
 
     $scope.back = function(){

@@ -21,11 +21,12 @@ angular.module('noteAndReminderWebApp')
     	apiService.edit('Note', note.id, note).then(
 	    	function(data){
 	    		$scope.note = data;
+          $scope.back();
 	    	}, function(data){
 	    		alert("A problem has happened. Try again");
 	   		}
    		);
-    	$scope.back();
+    	
     };
     $scope.back = function(){
        $location.path('/viewNote/' + $scope.note.id);
