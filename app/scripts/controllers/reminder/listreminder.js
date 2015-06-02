@@ -107,4 +107,13 @@ angular.module('noteAndReminderWebApp')
    		}
    	};
 
+   $scope.compareDateTimeToNow = function(stringDateTime){
+    var dateTime = convertStringToDateTime(stringDateTime);
+    var now = new Date();
+    if(dateTime >= now){
+      return '<strong>true</strong>';
+    }
+    return 'false';
+  }
+
   });

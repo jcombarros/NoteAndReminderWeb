@@ -61,7 +61,7 @@
 			<tbody ng-repeat="reminder in reminders">
 				<tr id="info{{reminder.id}}" onmouseover="$(this).toggleClass('success')" onmouseout="$(this).toggleClass('success')">
 					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.title}}</td>
-					<td class='cursorPointer' ng-click="details({{reminder.id}})">{{reminder.completed}}</td>
+					<td class='cursorPointer' ng-click="details({{reminder.id}})" ng-bind-html="compareDateTimeToNow(reminder.completionDate)"></td>
 					<td align="right">
 						<button type="button"  ng-click="edit({{reminder.id}})" class="btn btn-primary btn-sm">Edit</button>
 						<button id="deleteButton{{reminder.id}}" type="button" ng-click="delete({{reminder.id}})" class="btn btn-danger btn-sm">

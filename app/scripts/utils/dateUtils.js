@@ -25,10 +25,10 @@ convertTwoDigits = function (number){
 		}
 	}
 
-function convertStringToDate(dateTime){
-	var day = dateTime.substring(0,2);
-	var month = dateTime.substring(3,5);
-	var year = dateTime.substring(6,10);
+function convertStringToDate(stringDate){
+	var day = stringDate.substring(0,2);
+	var month = stringDate.substring(3,5);
+	var year = stringDate.substring(6,10);
 
 	var date = new Date();
 	date.setDate(day);
@@ -38,11 +38,31 @@ function convertStringToDate(dateTime){
 	return date;
 }
 
-function convertStringToTime(stringDate){
-	var hour = stringDate.substring(11,13);
-	var minute = stringDate.substring(14,16);
+function convertStringToTime(dateTime){
+	var hour = dateTime.substring(11,13);
+	var minute = dateTime.substring(14,16);
 
 	var date = new Date();
+	date.setHours(hour);
+	date.setMinutes(minute);
+	date.setSeconds('');
+	date.setMilliseconds('');
+
+	return date;
+}
+
+function convertStringToDateTime(stringDateTime){
+	var day = stringDateTime.substring(0,2);
+	var month = stringDateTime.substring(3,5);
+	var year = stringDateTime.substring(6,10);
+
+	var hour = stringDateTime.substring(11,13);
+	var minute = stringDateTime.substring(14,16);
+
+	var date = new Date();
+	date.setDate(day);
+	date.setMonth(month-1);
+	date.setFullYear(year);
 	date.setHours(hour);
 	date.setMinutes(minute);
 	date.setSeconds('');
