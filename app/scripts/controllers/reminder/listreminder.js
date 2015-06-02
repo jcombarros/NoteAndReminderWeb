@@ -11,7 +11,7 @@ angular.module('noteAndReminderWebApp')
   .controller('ListreminderCtrl', function ($scope, $routeParams, $location, apiService) {
   	
   	$scope.getAll = function(){
-	    apiService.getAll('Reminder').then(
+	    apiService.getByUser('Reminder').then(
 	    	function(data){
 	    		$scope.reminders = data;
 	    	}, function(data){

@@ -54,12 +54,19 @@ app.factory('apiService', function ($rootScope, $http, $q, authService) {
     return methodREST('DELETE', entity, id, {});
   }
 
-  var methodREST = function(methodREST, entity, id, object){
+  service.getByUser = function(entity){
+    return methodREST('GET', entity, "", {}, $rootScope.userId);
+  }
+
+  var methodREST = function(methodREST, entity, id, object, userId){
     setEntity(entity);
     setId(id);
     setEntityObject(object);
-
     makeUrl();
+
+    if(userId){
+      finalUrl = finalUrl + 'userId=' + userId;
+    }
 
     var deferred = $q.defer();
     $http({

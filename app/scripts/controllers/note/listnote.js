@@ -9,7 +9,7 @@
  */
 angular.module('noteAndReminderWebApp')
   .controller('ListnoteCtrl', function ($scope, $routeParams, $location, apiService) {
-    apiService.getAll('Note').then(
+    apiService.getByUser('Note').then(
     	function(data){
     		$scope.notes = data;
     	}, function(data){
