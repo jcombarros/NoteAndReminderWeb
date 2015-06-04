@@ -111,9 +111,9 @@ angular.module('noteAndReminderWebApp')
     var dateTime = convertStringToDateTime(stringDateTime);
     var now = new Date();
     if(dateTime >= now){
-      return '<strong>true</strong>';
+      return 'false';
     }
-    return 'false';
+    return '<strong>true</strong>';
   }
 
   });

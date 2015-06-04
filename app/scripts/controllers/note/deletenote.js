@@ -20,6 +20,7 @@ angular.module('noteAndReminderWebApp')
     	apiService.delete('Note', $scope.note.id).then(
 	    	function(data){
 	    		//$scope.note = data;
+          $location.path('/listNote');
 	    	}, function(data){
           alert("A problem has happened. Try again");
 	   		}
